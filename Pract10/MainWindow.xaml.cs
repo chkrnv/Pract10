@@ -24,7 +24,7 @@ namespace Pract10
         {
             InitializeComponent();
         }
-        List<int> list;
+        List<int> list;//создаем обобщеннаую коллекцию "лист" про нее написано в лекции
 
         private void Отчистить_Click(object sender, RoutedEventArgs e)
         {
@@ -49,14 +49,14 @@ namespace Pract10
         {
             try
             {
-                list = new();
-                int itemsCount = Int32.Parse(inputItemsCount.Text);
-                Random rnd = new();
+                list = new();// создаем массив
+                int itemsCount = Int32.Parse(inputItemsCount.Text);// введеное число записываем в текст бокс
+                Random rnd = new();// заполняем рандомными числами массив
                 for (int i = 0; i < itemsCount; i++)
                 {
-                    list.Add(rnd.Next(-100, 100));
+                    list.Add(rnd.Next(-100, 100));//в диапазоне -100, 100
                 }
-                currentData.ItemsSource = list;
+                currentData.ItemsSource = list;//записиываем получившийся массив
             }
             catch (Exception ex)
             {
@@ -66,20 +66,20 @@ namespace Pract10
 
         private void Найти_Click(object sender, RoutedEventArgs e)
         {
-           int positiv = 0;
-           int negativ = 0;
-           for (int i = 0; i < list.Count; i++)
+           int positiv = 0;// кол-во положительных
+           int negativ = 0;// кол-во отрицательных
+           for (int i = 0; i < list.Count; i++)//проходимся по массиву
            {
-                if (list[i]>0)
+                if (list[i]>0)//если элемент массива юольше 0
                 {                
-                    positiv++;
+                    positiv++;// то запоминаем его как положительное число
                 }
-                else if (list[i]<0)
+                else if (list[i]<0)//если меньше 0
                 {
-                    negativ++;
+                    negativ++;// то записываем как отрицательное
                 }
            }
-            positiveNumbers.Text = positiv.ToString();
+            positiveNumbers.Text = positiv.ToString();//записываем результаты в текст боксы
             negativeNumbers.Text = negativ.ToString();
         }
     }
